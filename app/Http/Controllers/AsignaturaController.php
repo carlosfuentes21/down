@@ -14,7 +14,8 @@ class AsignaturaController extends Controller
      */
     public function index()
     {
-        //
+        $asignatura = Asignatura::all();
+        return  response()->json($asignatura);
     }
 
     /**
@@ -35,7 +36,10 @@ class AsignaturaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $asignatura = new Asignatura();
+        $asignatura->nombre=$request->nombre;
+        $asignatura->save();
+        return  response()->json($asignatura);
     }
 
     /**
@@ -44,9 +48,10 @@ class AsignaturaController extends Controller
      * @param  \App\Asignatura  $asignatura
      * @return \Illuminate\Http\Response
      */
-    public function show(Asignatura $asignatura)
+    public function show(Asignatura $id)
     {
-        //
+        $asignatura = Asignatura::find($id);
+        return  response()->json($asignatura);
     }
 
     /**
@@ -67,9 +72,12 @@ class AsignaturaController extends Controller
      * @param  \App\Asignatura  $asignatura
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asignatura $asignatura)
+    public function update(Request $request, $id)
     {
-        //
+        $asignatura = Asignatura::find($id);
+        $asignatura->nombre = $request->nombre;
+        $asignatura->save();
+        return  response()->json($asignatura);
     }
 
     /**
@@ -78,8 +86,10 @@ class AsignaturaController extends Controller
      * @param  \App\Asignatura  $asignatura
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Asignatura $asignatura)
+    public function destroy($id)
     {
-        //
+        $asignatura = Asignatura::find($id);
+        $asignatura->delete();
+        return  response()->json($asignatura);
     }
 }

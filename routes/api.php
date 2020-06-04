@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//RUTAS PARA LA GESTION DE ASIGNATURAS
+Route::post('/asignatura', 'AsignaturaController@store')->name('asignaturaGuardar');
+Route::get('/asignatura', 'AsignaturaController@index')->name('asignaturaListar');
+Route::delete('/asignatura/{id}', 'AsignaturaController@destroy')->name('asignaturaEliminar');
+Route::put('/asignatura/{id}', 'AsignaturaController@update')->name('asignaturaActualizar');

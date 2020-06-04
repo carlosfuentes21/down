@@ -30,7 +30,7 @@ class Persona extends Model
      * @var array
      */
     protected $fillable = [
-        'documento', 'nombre', 'apellido', 'fechaNac', 'sexo', 'telefono', 'foto', 'user_id'
+        'documento', 'nombre', 'apellido', 'fechaNac', 'sexo', 'telefono', 'foto', 'user_id',
     ];
 
     /**
@@ -40,7 +40,7 @@ class Persona extends Model
 
     public function user()
     {
-                return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
